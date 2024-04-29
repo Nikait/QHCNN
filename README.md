@@ -1,6 +1,6 @@
 # qcnn
 
-### installing requirements
+### installing dependencies
 ```console
 foo@bar:~$ pip3 install -r requirements.txt
 ```
