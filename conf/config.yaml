@@ -1,0 +1,13 @@
+train:
+  epoch_count: 5
+  lr: 3e-3
+  batch_size: 20
+
+data:
+  load_dir: "/mnist"
+  width: 9
+  height: 7
+  min_length: 150
+
+plot:
+  path: graphics.png
