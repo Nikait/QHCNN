@@ -12,7 +12,7 @@ from plotting import plot_history
 from conf.structured_config import Config
 
 
-@hydra.main(config_name="config", version_base="1.3.2")
+@hydra.main(config_name="config", version_base=None)
 def main(cfg: Config) -> None:
     logging.basicConfig(level=logging.INFO)
     train_dataloader = DataLoader(
@@ -20,8 +20,8 @@ def main(cfg: Config) -> None:
             *cfg.data.values(),
             train=True
         ),
-        batch_size = cfg.train.batch_size,
-        shuffle = True
+        batch_size=cfg.train.batch_size,
+        shuffle=True
     )
 
     test_dataloader = DataLoader(
@@ -29,8 +29,7 @@ def main(cfg: Config) -> None:
             *cfg.data.values(),
             train=False
         ),
-        batch_size = cfg.data.min_length,
-        #shuffle = True
+        batch_size=2*cfg.data.min_length,
     )
 
     losses, scores = [], []
@@ -80,7 +79,7 @@ def main(cfg: Config) -> None:
         )
 
     plot_history(cfg.plot.path, losses, scores)
-    logging.info("History has been plotted to", cfg.plot.path)
+    logging.info(f"History has been plotted to {cfg.plot.path}")
 
 
 if __name__ == "__main__":
