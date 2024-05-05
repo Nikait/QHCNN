@@ -10,12 +10,12 @@ class Train:
     lr: float = 3e-3
     # liner sheduler for lr
     start_factor: float = 1.0
-    end_factor: float = 1
+    end_factor: float = 0.333
 
     # weights initialize params, uniform distribution
     # from 0 to param
     pi = 2 * torch.acos(torch.zeros(1)).item()
-    conv_weight: float = 1
+    conv_weight: float = 0.1
     bias: float = 0.01
     quantum_weight: float = pi / 2
 
