@@ -6,28 +6,19 @@ from torch.utils.data import Dataset
 
 class MNISTDataset(Dataset):
     @staticmethod
-    def unison_shuffle(
-            a: torch.Tensor, 
-            b: torch.Tensor
-        ) -> tuple[torch.Tensor, ...]:
-
-        assert len(a) == len(b), "lengths are not matched!"
-        permutation = torch.randperm(len(a))
-
-        return a[permutation], b[permutation]
-
-    @staticmethod
     def transform_data(
             data: torchvision.datasets,
             width: int,
             height: int,
-            min_len: int
+            min_len: int,
+            scale_index: torch.Tensor
         ) -> tuple[torch.Tensor, ...]:
 
         transform = transforms.Compose(
             [
                 transforms.ToTensor(),
-                transforms.Resize((width, height))
+                transforms.Resize((width, height)),
+                #transforms.Lambda(lambda image: scale_index * image)
             ]
         )
 
@@ -36,7 +27,7 @@ class MNISTDataset(Dataset):
 
         zeros_labels = torch.Tensor([0 for i in range(min_len)])
         ones_labels = torch.Tensor([1 for i in range(min_len)])
-
+        
         zeros = list(
             map(
                 lambda x: transform(x[0]),
@@ -66,6 +57,7 @@ class MNISTDataset(Dataset):
         ):
 
         self.__length = 2 * min_len
+        self.__pi = 2 * torch.acos(torch.zeros(1)).item()
 
         loaded_data = torchvision.datasets.MNIST(
             load_dir, 
@@ -74,14 +66,12 @@ class MNISTDataset(Dataset):
         )
 
         self.x_data, self.y_data = self.transform_data(
-            loaded_data, width, height, min_len
+            loaded_data, width, height, min_len, self.__pi
         )
 
-        self.x_data, self.y_data = self.unison_shuffle(
-            self.x_data, self.y_data
+        self.x_data = self.x_data.reshape(
+            shape=(self.__length, 1, width, height)
         )
-
-        self.x_data = self.x_data.reshape(shape=(self.__length, 1, width, height))
 
 
     def __getitem__(self, index: int) -> tuple[torch.Tensor, ...]:
