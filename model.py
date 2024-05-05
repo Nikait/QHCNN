@@ -1,21 +1,41 @@
 import pennylane as qml
-from pennylane.math import fidelity
+from pennylane import numpy as np
 from torch import nn
 import torch
 
+from conf.quantum_config import *
+from conf.structured_config import Config
 
-dev = qml.device("lightning.qubit", wires=12)
 
-zero_label, one_label = torch.zeros(size=(2, 2)), torch.zeros(size=(2, 2))
-zero_label[1, 1], one_label[0, 0] = 1., 1.
+def noise_layer(prob: float) -> None:
+    for j in range(n_qubits):
+        if add_noise:
+            # Depolarising channel
+            if np.random.choice([1, 0], p=[prob/3, 1-prob/3]):
+                qml.PauliX(wires=j)
+            if np.random.choice([1, 0], p=[prob/3, 1-prob/3]):
+                qml.PauliY(wires=j)
+            if np.random.choice([1, 0], p=[prob/3, 1-prob/3]):
+                qml.PauliZ(wires=j)
+
+
+def iswap_layer(acseding: bool) -> None:
+    for i in range(n_qubits-1):
+        if not acseding:
+            qml.ISWAP(wires=[i+1, i])
+        else:
+            qml.ISWAP(wires=[n_qubits-i-1, n_qubits-i-2])
 
 
 @qml.qnode(dev, interface='torch')
-def qcircuit(inputs, quantum_params):
+def qcircuit(
+    inputs: torch.Tensor, quantum_params: torch.Tensor
+    ) -> torch.Tensor:
     """
     inputs : (6*6+1,)
     quantum_params: (3,)
     """
+
     data, y = inputs[:-1].reshape(6, 6), inputs[-1:]
     y = one_label if y else zero_label
 
@@ -28,8 +48,9 @@ def qcircuit(inputs, quantum_params):
         qml.RY(row[3:][1], wires=2*i+1)
         qml.RX(row[3:][2], wires=2*i+1)
 
-    for i in range(11):
-        qml.ISWAP(wires=[i+1, i])
+    noise_layer(P1)
+    iswap_layer(True)
+    noise_layer(P2)
 
     qml.Barrier(wires=[0, 11])
 
@@ -42,8 +63,9 @@ def qcircuit(inputs, quantum_params):
         qml.RX(row[3:][1], wires=2*i+1)
         qml.RY(row[3:][2], wires=2*i+1)
 
-    for i in range(10, -1, -1):
-        qml.ISWAP(wires=[i+1, i])
+    noise_layer(P1)
+    iswap_layer(False)
+    noise_layer(P1)
 
     qml.RX(quantum_params[0], wires=0)
     qml.RY(quantum_params[1], wires=0)
@@ -53,8 +75,10 @@ def qcircuit(inputs, quantum_params):
 
 
 class QCNN(nn.Module):
-    def __init__(self):
+    def __init__(self, cfg: Config):
         super(QCNN, self).__init__()
+
+        self.__pi = 2 * torch.acos(torch.zeros(1)).item()
 
         self.weight_shapes = {
             "quantum_params": (3,)
@@ -69,18 +93,17 @@ class QCNN(nn.Module):
             stride=2
         )
 
-        self.initialize_weights()
+        self.initialize_weights(cfg)
 
 
-    def initialize_weights(self):
+    def initialize_weights(self, cfg: Config) -> None:
         for m in self.modules():
             if isinstance(m, nn.Conv2d):
-                nn.init.uniform_(m.weight, 0, 1)
+                nn.init.uniform_(m.weight, 0, cfg.train.conv_weight)
                 if m.bias is not None:
-                    nn.init.constant_(m.bias, 0.01)
+                    nn.init.uniform_(m.bias, cfg.train.bias)
             if isinstance(m, qml.qnn.TorchLayer):
-                pi_over_2 = torch.acos(torch.zeros(1)).item()
-                nn.init.uniform_(m.quantum_params, 0, pi_over_2)
+                nn.init.uniform_(m.quantum_params, 0, cfg.train.quantum_weight)
 
 
     def forward(self, images: torch.Tensor, y: torch.Tensor) -> torch.Tensor:
