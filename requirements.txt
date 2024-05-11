@@ -1,9 +1,10 @@
-torch==2.3.0
-PennyLane==0.35.1
-torchvision==0.18.0
+torch
+PennyLane
+torchvision
 
 seaborn==0.13.2
 pandas
 matplotlib
 pandas
 scikit-learn
+hydra-core
