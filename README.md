@@ -16,7 +16,7 @@ Alas, none of the articles comes with an implementation on any framework.
 ## Purposes
 
 - **Target**:
-Create a quantum-hybrid CNN on a quantum emulator, comparable in metric (accuracy) to the classical CNN on small-sized images, using and expanding the approaches described in the article about quantum-hybrid CNN [2]
+    - Create a quantum-hybrid CNN on a quantum emulator, comparable in metric (accuracy) to the classical CNN on small-sized images, using and expanding the approaches described in the article about quantum-hybrid CNN **[2]**
 - **Tasks**:
     - Find a suitable dataset for experiments.
     - Implement a classic convolutional layer in pytorch.
