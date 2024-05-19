@@ -82,12 +82,15 @@ foo@bar:~$ python3 main.py
 -----
 
 *[1]* Quantum Convolutional Neural Networks
+
     [Iris Cong, Soonwon Choi, Mikhail D. Lukin, 2019](https://arxiv.org/search/quant-ph?searchtype=author&query=Choi,+S)
     
 *[2]* Hybrid quantum learning with data re-uploading on a small-scale superconducting quantum simulator
+
     [Aleksei Tolstobrov, Gleb Fedorov, Shtefan Sanduleanu, Shamil Kadyrmetov and others, 2024](https://arxiv.org/search/quant-ph?searchtype=author&query=Kadyrmetov,+S)
     
 *[3]* Data re-uploading for a universal quantum classifier
+
     [Adrián Pérez-Salinas, Alba Cervera-Lierta, Elies Gil-Fuster, José I. Latorre, 2020](https://arxiv.org/search/quant-ph?searchtype=author&query=Gil-Fuster,+E)
 
 
