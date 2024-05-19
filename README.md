@@ -20,7 +20,7 @@ Alas, none of the articles comes with an implementation on any framework.
 - **Tasks**:
     - Find a suitable dataset for experiments.
     - Implement a classic convolutional layer in pytorch.
-    - Conduct experiments with different types of quantum layer models on pennylane (a framework for working with QMO).
+    - Conduct experiments with different types of quantum layer models on pennylane.
     - Conduct experiments with resistance to quantum noise.
 
 ## Dataset and classical convolution
