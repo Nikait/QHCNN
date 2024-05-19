@@ -7,9 +7,9 @@ The process of training CNNs takes a lot of time, so recently the concept of bui
 At the moment, there are no quantum computers on which large images can be encoded, so I would like to create a quantum-hybrid CNN comparable in metrics to classical CNNs, where the image is initially processed by classical convolutional layers, and then by quantum.
 
 ## Existing solutions
-- A fully quantum CNN has been created [1] - it uses variational parameters O(log(N)) for the input sizes of N qubits, which allows it to be effectively trained and implemented on realistic quantum devices of the near future, also post, quantum error correction has also been implemented.
+- A fully quantum CNN has been created **[1]** - it uses variational parameters O(log(N)) for the input sizes of N qubits, which allows it to be effectively trained and implemented on realistic quantum devices of the near future, also post, quantum error correction has also been implemented.
 
-- A quantum-hybrid CNN [2] has been created - it uses only 4 qubits, the concept of data re-uploading [3] has been implemented, which consists of re-encoding an image onto a quantum circuit, which often improves the final result.
+- A quantum-hybrid CNN **[2]** has been created - it uses only 4 qubits, the concept of data re-uploading **[3]** has been implemented, which consists of re-encoding an image onto a quantum circuit, which often improves the final result.
 
 Alas, none of the articles comes with an implementation on any framework.
 
@@ -82,7 +82,7 @@ foo@bar:~$ python3 main.py
 -----
 
 **[1]** [Quantum Convolutional Neural Networks](https://arxiv.org/search/quant-ph?searchtype=author&query=Choi,+S) \
-        Iris Cong, Soonwon Choi, Mikhail D. Lukin, 2019]
+        Iris Cong, Soonwon Choi, Mikhail D. Lukin, 2019
     
 **[2]** [Hybrid quantum learning with data re-uploading on a small-scale superconducting quantum simulator](https://arxiv.org/search/quant-ph?searchtype=author&query=Kadyrmetov,+S) \
         Aleksei Tolstobrov, Gleb Fedorov, Shtefan Sanduleanu, Shamil Kadyrmetov and others, 2024
