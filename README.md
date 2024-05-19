@@ -50,9 +50,9 @@ We are introducing a new circuit with 12 qubits, onto which 6x6 pictures are loa
 
 ![image](https://github.com/Nikait/qcnn_practice/assets/50284221/75e931a5-265e-4842-8000-18cbd16b62b5)
 
-With such ansatz we getting 0.92 accuracy:
+With such ansatz we getting 0.912 accuracy:
 
-![image](https://github.com/Nikait/qcnn_practice/assets/50284221/9e992cf2-e357-467c-b16a-a95fd92c27da)
+![image](https://github.com/Nikait/QHCNN/assets/50284221/c96dab81-48bd-4366-9d0f-d6ab8117d3a3)
 
 ## Experiments with quantum noise
 
@@ -62,10 +62,15 @@ There are many ways to do this, it was decided to use depolarization. There is s
 
 Results with some p values on the second version of the quantum layer are below:
 
-![image](https://github.com/Nikait/qcnn_practice/assets/50284221/fd50b8e2-ae87-40ca-9f1b-4bff463072eb)
+|       p       |    accuracy   |
+| ------------- |:-------------:|
+|       0       |     0.912     |
+|     0.005     |     0.887     |
+|     0.010     |     0.875     |
+|     0.050     |     0.825     |
 
-We can note that the algorithm turned out to be stable; if p was too large, such as 0.05, convergence was no longer observed; for it, the table shows the accuracy at the peak at some point in the training.
-
+We can note that the algorithm turned out to be stable.
+If p was too large, such as 0.05, convergence was no longer observed; for it, the table shows the accuracy at the peak at some point in the training.
 
 More detailed graphics you can see in jupyter notebooks at /deprecated directory.
 
