@@ -81,13 +81,13 @@ foo@bar:~$ python3 main.py
 
 -----
 
-**[1]** [Quantum Convolutional Neural Networks](https://arxiv.org/search/quant-ph?searchtype=author&query=Choi,+S) \
+**[1]** [Quantum Convolutional Neural Networks](https://arxiv.org/abs/1810.03787) \
         Iris Cong, Soonwon Choi, Mikhail D. Lukin, 2019
     
-**[2]** [Hybrid quantum learning with data re-uploading on a small-scale superconducting quantum simulator](https://arxiv.org/search/quant-ph?searchtype=author&query=Kadyrmetov,+S) \
-        Aleksei Tolstobrov, Gleb Fedorov, Shtefan Sanduleanu, Shamil Kadyrmetov and others, 2024
+**[2]** [Hybrid quantum learning with data re-uploading on a small-scale superconducting quantum simulator](https://arxiv.org/abs/2305.02956) \
+        Aleksei Tolstobrov, Gleb Fedorov, Shtefan Sanduleanu, Shamil Kadyrmetov, Andrei Vasenin, Aleksey Bolgar, Daria Kalacheva, Viktor Lubsanov, Aleksandr Dorogov, Julia Zotova, Peter Shlykov, Aleksei Dmitriev, Konstantin Tikhonov, Oleg V. Astafiev, 2024
     
-**[3]** [Data re-uploading for a universal quantum classifier](https://arxiv.org/search/quant-ph?searchtype=author&query=Gil-Fuster,+E) \
+**[3]** [Data re-uploading for a universal quantum classifier](https://arxiv.org/abs/1907.02085) \
         Adrián Pérez-Salinas, Alba Cervera-Lierta, Elies Gil-Fuster, José I. Latorre, 2020
 
 
