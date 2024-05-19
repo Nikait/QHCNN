@@ -62,12 +62,12 @@ There are many ways to do this, it was decided to use depolarization. There is s
 
 Results with some p values on the second version of the quantum layer are below:
 
-|       p       |    accuracy   |
-| ------------- |:-------------:|
-|       0       |     0.912     |
-|     0.005     |     0.887     |
-|     0.010     |     0.875     |
-|     0.050     |     0.825     |
+|<div style="width:70px">p</div>|    accuracy   |
+| ----------------------------- |:-------------:|
+|              0                |     0.912     |
+|            0.005              |     0.887     |
+|            0.010              |     0.875     |
+|            0.050              |     0.825     |
 
 We can note that the algorithm turned out to be stable.
 If p was too large, such as 0.05, convergence was no longer observed; for it, the table shows the accuracy at the peak at some point in the training.
