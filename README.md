@@ -58,7 +58,7 @@ With such ansatz we getting 0.912 accuracy:
 
 To realistically simulate the machines on which our circuits will run, as well as the robustness of the algorithms themselves, we need to add noise to our simulations.
 
-There are many ways to do this, it was decided to use depolarization. There is some probability p, then with probabilities p/3 rotations by π relative to the axes OX, OY and OZ can occur. With probability 1-p, a single operator occurs, that is, nothing happens. Noise was added after all operators on each qubit except the actual data loading.
+There are many ways to do this, it was decided to use depolarization with probability p.
 
 Results with some p values on the second version of the quantum layer are below:
 
