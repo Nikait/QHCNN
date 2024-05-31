@@ -1,10 +1,6 @@
 # Quantum-Hybrid Convolutional NN with data re-uploading
 
-Convolutional neural networks (hereinafter referred to as CNNs) have proven themselves as a good tool for solving the problem of image classification and recognition.
-
-The process of training CNNs takes a lot of time, so recently the concept of building quantum-hybrid CNNs with the calculation of the convolution operation on a quantum computer has been actively gaining momentum.
-
-At the moment, there are no quantum computers on which large images can be encoded, so I would like to create a quantum-hybrid CNN comparable in metrics to classical CNNs, where the image is initially processed by classical convolutional layers, and then by quantum.
+Creating a quantum-hybrid CNN comparable in metrics to classical CNNs, where the image is initially processed by classical convolutional layers, and then by quantum.
 
 ## Existing solutions
 - A fully quantum CNN has been created **[1]** - it uses variational parameters O(log(N)) for the input sizes of N qubits, which allows it to be effectively trained and implemented on realistic quantum devices of the near future, also post, quantum error correction has also been implemented.
